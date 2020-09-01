@@ -60,11 +60,11 @@ for i in range(train_length):
     elif digit ==6: digit_list[6] += 1
     elif digit ==7: digit_list[7] += 1
     elif digit ==8: digit_list[8] += 1
-    elif digit ==9: digit_list[9] += 1
+    elif digit ==9: digit_list[9] += 1<br>
 print(digit_list)
-</code></pre><br>
+</code></pre>
 - train data에 대해서 0~9까지 각각 나누어 폴더에 넣고, test data는 test/emist 경로에 저장
-<code><pre>
+<pre><code>
 def make_folder(directory_path):
     if not os.path.isdir(directory_path):
         os.mkdir(directory_path)<br><br>
