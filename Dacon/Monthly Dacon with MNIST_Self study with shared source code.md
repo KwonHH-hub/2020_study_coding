@@ -62,7 +62,7 @@ for i in range(train_length):
     elif digit ==8: digit_list[8] += 1
     elif digit ==9: digit_list[9] += 1
 print(digit_list)
-</code></pre>
+</code></pre><br>
 - train data에 대해서 0~9까지 각각 나누어 폴더에 넣고, test data는 test/emist 경로에 저장
 <code><pre>
 def make_folder(directory_path):
@@ -178,10 +178,7 @@ for i in range(len(train)):  # train 데이터 수만큼 반복
         #     cv2.imwrite(path_train_image, img)
         cv2.imwrite(path_train_image, img)
 </code></pre><br><br>
-1. 데이터셋 만들기
-    1. Transform 사용해 image data compose 하기 (image size 조정, normalize, tensor로 변경 등)
-    1. ImageFolder를 이용해 Data Load 하기
-    1. DataLoader로 DataSet(Batch image) 불러오기<br>
+- dataset 크기 조정, normalization 등
 <pre><code>
 for i in range(len(test)):
     letter = test.loc[i, 'letter'] # letter
@@ -226,7 +223,7 @@ for i in range(6):
   plt.yticks([])
 fig
 </code></pre>
-1. Neural Network 만들기
+2. Neural Network 만들기
 <pre><code>
 import torch
 import torchvision
