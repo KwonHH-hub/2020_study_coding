@@ -88,7 +88,7 @@ while will_visit:
     print('current',current)
     print('visit', visit)
 
-    if ['e', 'e'] in linked[current[0]][current[1]]:
+    if ['e', 'e'] == linked[current[0]][current[1]]:
         print("hey")
         print(linked[current[1]])
         continue
