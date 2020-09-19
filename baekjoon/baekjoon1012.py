@@ -89,4 +89,4 @@ for t in range(test_case):
         xy.append([x, y])
         graph[x][y] = 1
     print(graph)
-    dfs(graph, 0, 0)
+    dfs(graph, 0, 0 )
