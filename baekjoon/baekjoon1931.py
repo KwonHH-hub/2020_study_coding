@@ -70,7 +70,7 @@ for tt in range(1, len(times)+1):
     diff = min_delay
 
     # print("st_point: ", st_point)
-    if st_point - diff == times[-tt][0]:
+    if st_point - diff == times[-tt][0] :
         count = count + 1
         st_point = times[-tt][0]
     else:
