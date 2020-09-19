@@ -16,7 +16,7 @@ for nn in range(n):
 print("map : ", mmap)
 
 
-#r 북쪽 n
+#r 북쪽  n
 #c 서쪽 m
 print(d)
 for t in range(n*m):
