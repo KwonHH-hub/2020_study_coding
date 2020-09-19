@@ -68,7 +68,7 @@ s = [[0] * (n + 1) for i in range(n + 1)]
 visit = [0 for i in range(n + 1)]
 print('\nvisit : ',visit)
 print('\ns1 : ',s)
-for i in range(m):
+for i in range(m) :
     x, y = map(int, input().split())
     s[x][y] = 1
     s[y][x] = 1
