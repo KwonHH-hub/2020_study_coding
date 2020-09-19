@@ -31,7 +31,7 @@ def find (gra, start = [0,0]):
             gra[curr[0] + 1][curr[1]] = 2
             find(gra, [curr[0] + 1][curr[1]])
 
-        else:
+        else :
             break
 
 
