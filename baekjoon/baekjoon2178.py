@@ -1,4 +1,4 @@
-# 실패
+# 실패1
 # def dir(pose, dir):
 #     if pose[0] == 6 or pose[1] == 4:
 #         return
@@ -47,62 +47,73 @@
 # # for _ in range(15):
 # #     s = find(s,c,graph)
 # print(graph)
+
+# 실패2
+# graph = [[1,0,1,1,1,1],[1,0,1,0,1,0],[1,0,1,0,1,1],[1,1,1,1,1,1]]
+# n = 4
+# m = 6
+# linked = []
+# temp = []
+# for nn in range(n):
+#     for mm in range(m):
+#         if graph[nn][mm] == 1:
+#             if mm + 1 < m:
+#                 pdx = [mm+1, nn]
+#                 if graph[pdx[1]][pdx[0]] == 1:
+#                     temp.append(pdx)
+#             if mm - 1 > 0:
+#                 ndx = [mm-1, nn]
+#                 if graph[ndx[1]][ndx[0]] == 1:
+#                     temp.append(ndx)
+#             if nn + 1 < n:
+#                 pdy = [mm, nn+1]
+#                 if graph[pdy[1]][pdy[0]] == 1:
+#                     temp.append(pdy)
+#             if nn - 1 > 0:
+#                 ndy = [mm, nn-1]
+#                 if graph[ndy[1]][ndy[0]] == 1:
+#                     temp.append(ndy)
+#             linked.append(list(temp))
+#         else:
+#             linked.append(list(['e', 'e']))
+# # 0,0 방문하고, 연결된 노드가 방문한 노드에 없으면 check 에 넣고, 처음 좌표 빼고
+# print('linked')
+# print(linked,'\n')
+#
+# visit = []
+# will_visit = [[0, 0]]
+#
+# count = 0
+# while will_visit:
+#     current = will_visit.pop()
+#     visit.append(current)
+#     print('current',current)
+#     print('visit', visit)
+#
+#     if ['e', 'e'] == linked[current[0]][current[1]]:
+#         print("hey")
+#         print(linked[current[1]])
+#         continue
+#     elif not (visit in linked[current[0]][current[1]]):
+#         will_visit.append(linked[current[0]][current[1]])
+#
+#     print('will visit', will_visit)
+#     # break
+#     # print('current', current)
+#     # for l in linked[count]:
+#     #     print('l',l)
+#     #     if linked[check[0]][check[1]] in l:
+#     #         visit.append(list(linked[check[0]][check[1]]))
+#     #         print('append visit :',visit)
+#     count += 1
+#     # check.pop()
+# print(count)
+
+
 graph = [[1,0,1,1,1,1],[1,0,1,0,1,0],[1,0,1,0,1,1],[1,1,1,1,1,1]]
 n = 4
 m = 6
-linked = []
-temp = []
-for nn in range(n):
-    for mm in range(m):
-        if graph[nn][mm] == 1:
-            if mm + 1 < m:
-                pdx = [mm+1, nn]
-                if graph[pdx[1]][pdx[0]] == 1:
-                    temp.append(pdx)
-            if mm - 1 > 0:
-                ndx = [mm-1, nn]
-                if graph[ndx[1]][ndx[0]] == 1:
-                    temp.append(ndx)
-            if nn + 1 < n:
-                pdy = [mm, nn+1]
-                if graph[pdy[1]][pdy[0]] == 1:
-                    temp.append(pdy)
-            if nn - 1 > 0:
-                ndy = [mm, nn-1]
-                if graph[ndy[1]][ndy[0]] == 1:
-                    temp.append(ndy)
-            linked.append(list(temp))
-        else:
-            linked.append(list(['e', 'e']))
-# 0,0 방문하고, 연결된 노드가 방문한 노드에 없으면 check 에 넣고, 처음 좌표 빼고
-print('linked')
-print(linked,'\n')
 
-visit = []
-will_visit = [[0, 0]]
+check = [[0] * m for _ in range(n)]
+print(check)
 
-count = 0
-while will_visit:
-    current = will_visit.pop()
-    visit.append(current)
-    print('current',current)
-    print('visit', visit)
-
-    if ['e', 'e'] == linked[current[0]][current[1]]:
-        print("hey")
-        print(linked[current[1]])
-        continue
-    elif not (visit in linked[current[0]][current[1]]):
-        will_visit.append(linked[current[0]][current[1]])
-
-    print('will visit', will_visit)
-    # break
-    # print('current', current)
-    # for l in linked[count]:
-    #     print('l',l)
-    #     if linked[check[0]][check[1]] in l:
-    #         visit.append(list(linked[check[0]][check[1]]))
-    #         print('append visit :',visit)
-    count += 1
-    # check.pop()
-print(count)
