@@ -26,7 +26,7 @@ for _ in range(image_size):
                 xp = int(image_size / 2)
                 yp = int(image_size / 2)
 
-            if temp == 0 or int(temp/(half*half)) == 1:
+            if temp == 0 or int(temp/(half*half)) == 1 :
                 print("ss ", ss, "s ", s)
                 result.append(int(temp/(half*half)))
                 temp = 0
