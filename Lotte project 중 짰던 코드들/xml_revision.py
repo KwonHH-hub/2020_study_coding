@@ -15,10 +15,10 @@ def int2str(num):
 numbering = 0
 
 targetDir = '../pascal_voc/pascalVOC_hh/Annotations/'
-save_Dir = 'C:/Users/사용자/Desktop/XML_list/'
+save_Dir = 'C:/Users/사용자/Desktop/Annotations/'
 
 img_targetDir = '../pascal_voc/pascalVOC_hh/JPEGImages/'
-img_save_Dir = 'C:/Users/사용자/Desktop/IMG_list/'
+img_save_Dir = 'C:/Users/사용자/Desktop/JPEGImages/'
 
 file_listhh = os.listdir(targetDir)
 print('hh\n', file_listhh)
@@ -53,8 +53,9 @@ for xml_file in file_listhh:
     target_filename.text = modified
 
     target_path = root.find("path")
-    original_path = target_path.text
-    modified_original_path = original_path.replace((original_path.split('/')[2]).split('.')[0], str_len_xml)
+    # original_path = target_path.text
+    # modified_original_path = original_path.replace((original_path.split('/')[2]).split('.')[0], str_len_xml)
+    modified_original_path = 'PascalVoc/Annotations/' + str_len_xml + '.jpg'
     target_path.text = modified_original_path
 
 
@@ -74,10 +75,7 @@ for xml_file in file_listhh:
 
 
 targetDir = '../pascal_voc/pascalVOC_ih/Annotations/'
-save_Dir = 'C:/Users/사용자/Desktop/XML_list/'
-
 img_targetDir = '../pascal_voc/pascalVOC_ih/JPEGImages/'
-img_save_Dir = 'C:/Users/사용자/Desktop/IMG_list/'
 
 file_listih = os.listdir(targetDir)
 print('ih\n', file_listih)
@@ -111,8 +109,9 @@ for xml_file in file_listih:
     target_filename.text = modified
 
     target_path = root.find("path")
-    original_path = target_path.text
-    modified_original_path = original_path.replace((original_path.split('/')[2]).split('.')[0], str_len_xml)
+    # original_path = target_path.text
+    # modified_original_path = original_path.replace((original_path.split('/')[2]).split('.')[0], str_len_xml)
+    modified_original_path = 'PascalVoc/Annotations/' + str_len_xml + '.jpg'
     target_path.text = modified_original_path
 
 
@@ -136,11 +135,8 @@ for xml_file in file_listih:
 #=================================================================================#
 
 
-targetDir = '../pascal_voc/pascalVOC_jw/Annotations/'
-save_Dir = 'C:/Users/사용자/Desktop/XML_list/'
-
-img_targetDir = '../pascal_voc/pascalVOC_jw/JPEGImages/'
-img_save_Dir = 'C:/Users/사용자/Desktop/IMG_list/'
+targetDir = '../pascal_voc/pascalVOC_ih/Annotations/'
+img_targetDir = '../pascal_voc/pascalVOC_ih/JPEGImages/'
 
 file_listjw = os.listdir(targetDir)
 print('jw\n', file_listjw)
@@ -174,8 +170,9 @@ for xml_file in file_listjw:
     target_filename.text = modified
 
     target_path = root.find("path")
-    original_path = target_path.text
-    modified_original_path = original_path.replace((original_path.split('/')[2]).split('.')[0], str_len_xml)
+    # original_path = target_path.text
+    # modified_original_path = original_path.replace((original_path.split('/')[2]).split('.')[0], str_len_xml)
+    modified_original_path = 'PascalVoc/Annotations/' + str_len_xml + '.jpg'
     target_path.text = modified_original_path
 
 
@@ -192,11 +189,8 @@ for xml_file in file_listjw:
 
     # =================================================================================#
 
-targetDir = '../pascal_voc/pascalVOC_mh/Annotations/'
-save_Dir = 'C:/Users/사용자/Desktop/XML_list/'
-
-img_targetDir = '../pascal_voc/pascalVOC_mh/JPEGImages/'
-img_save_Dir = 'C:/Users/사용자/Desktop/IMG_list/'
+targetDir = '../pascal_voc/pascalVOC_ih/Annotations/'
+img_targetDir = '../pascal_voc/pascalVOC_ih/JPEGImages/'
 
 file_listmh = os.listdir(targetDir)
 print('mh\n',file_listmh)
@@ -229,8 +223,9 @@ for xml_file in file_listmh:
     target_filename.text = modified
 
     target_path = root.find("path")
-    original_path = target_path.text
-    modified_original_path = original_path.replace((original_path.split('/')[2]).split('.')[0], str_len_xml)
+    # original_path = target_path.text
+    # modified_original_path = original_path.replace((original_path.split('/')[2]).split('.')[0], str_len_xml)
+    modified_original_path = 'PascalVoc/Annotations/' + str_len_xml + '.jpg'
     target_path.text = modified_original_path
 
     save_path = os.path.join(save_Dir, str_len_xml) + '.xml'
