@@ -12,30 +12,32 @@ def int2str(num):
     else:
         return str(num)
 
-# len_xml = 0
+numbering = 0
+
 targetDir = '../pascal_voc/pascalVOC_hh/Annotations/'
 save_Dir = 'C:/Users/사용자/Desktop/XML_list/'
 
 img_targetDir = '../pascal_voc/pascalVOC_hh/JPEGImages/'
 img_save_Dir = 'C:/Users/사용자/Desktop/IMG_list/'
 
-file_list = os.listdir(targetDir)
-xml_list1 = []
-for file in file_list:
-    if '.xml' in file:
-        xml_list1.append(file)
+file_listhh = os.listdir(targetDir)
+print('hh\n', file_listhh)
+# xml_list1 = []
+# for file in file_list1:
+#     if '.xml' in file:
+#         xml_list1.append(file)
 
 file_dict1 = {}
 
-numbering = 0
-for file in file_list:
+
+for file in file_listhh:
     if '.xml' in file:
         file_dict1[file] = numbering
         numbering += 1
 print(file_dict1)
 
 
-for xml_file in xml_list1:
+for xml_file in file_listhh:
     num = file_dict1[xml_file]
     str_len_xml = int2str(num)
     target_path = os.path.join(targetDir, xml_file)
@@ -55,7 +57,6 @@ for xml_file in xml_list1:
     modified_original_path = original_path.replace((original_path.split('/')[2]).split('.')[0], str_len_xml)
     target_path.text = modified_original_path
 
-    # len_xml += 1
 
     save_path = os.path.join(save_Dir, str_len_xml) + '.xml'
     tree.write(save_path)
@@ -78,22 +79,23 @@ save_Dir = 'C:/Users/사용자/Desktop/XML_list/'
 img_targetDir = '../pascal_voc/pascalVOC_ih/JPEGImages/'
 img_save_Dir = 'C:/Users/사용자/Desktop/IMG_list/'
 
-file_list = os.listdir(targetDir)
-xml_list2 = []
-for file in file_list:
-    if '.xml' in file:
-        xml_list2.append(file)
+file_listih = os.listdir(targetDir)
+print('ih\n', file_listih)
+# xml_list2 = []
+# for file in file_list2:
+#     if '.xml' in file:
+#         xml_list2.append(file)
 
 file_dict2 = {}
 
-for file in file_list:
+for file in file_listih:
     if '.xml' in file:
         file_dict2[file] = numbering
         numbering += 1
 print(file_dict2)
 
 
-for xml_file in xml_list2:
+for xml_file in file_listih:
     num = file_dict2[xml_file]
     str_len_xml = int2str(num)
     target_path = os.path.join(targetDir, xml_file)
@@ -140,22 +142,23 @@ save_Dir = 'C:/Users/사용자/Desktop/XML_list/'
 img_targetDir = '../pascal_voc/pascalVOC_jw/JPEGImages/'
 img_save_Dir = 'C:/Users/사용자/Desktop/IMG_list/'
 
-file_list = os.listdir(targetDir)
-xml_list3 = []
-for file in file_list:
-    if '.xml' in file:
-        xml_list3.append(file)
+file_listjw = os.listdir(targetDir)
+print('jw\n', file_listjw)
+# xml_list3 = []
+# for file in file_list3:
+#     if '.xml' in file:
+#         xml_list3.append(file)
 
 file_dict3 = {}
 
-for file in file_list:
+for file in file_listjw:
     if '.xml' in file:
         file_dict3[file] = numbering
         numbering += 1
 print(file_dict3)
 
 
-for xml_file in xml_list3:
+for xml_file in file_listjw:
     num = file_dict3[xml_file]
     str_len_xml = int2str(num)
     target_path = os.path.join(targetDir, xml_file)
@@ -189,56 +192,57 @@ for xml_file in xml_list3:
 
     # =================================================================================#
 
-    targetDir = '../pascal_voc/pascalVOC_mh/Annotations/'
-    save_Dir = 'C:/Users/사용자/Desktop/XML_list/'
+targetDir = '../pascal_voc/pascalVOC_mh/Annotations/'
+save_Dir = 'C:/Users/사용자/Desktop/XML_list/'
 
-    img_targetDir = '../pascal_voc/pascalVOC_mh/JPEGImages/'
-    img_save_Dir = 'C:/Users/사용자/Desktop/IMG_list/'
+img_targetDir = '../pascal_voc/pascalVOC_mh/JPEGImages/'
+img_save_Dir = 'C:/Users/사용자/Desktop/IMG_list/'
 
-    file_list = os.listdir(targetDir)
-    xml_list4 = []
-    for file in file_list:
-        if '.xml' in file:
-            xml_list4.append(file)
+file_listmh = os.listdir(targetDir)
+print('mh\n',file_listmh)
+# xml_list4 = []
+# for file in file_list4:
+#     if '.xml' in file:
+#         xml_list4.append(file)
 
-    file_dict4 = {}
+file_dict4 = {}
 
-    for file in file_list:
-        if '.xml' in file:
-            file_dict4[file] = numbering
-            numbering += 1
-    print(file_dict4)
+for file in file_listmh:
+    if '.xml' in file:
+        file_dict4[file] = numbering
+        numbering += 1
+print(file_dict4)
 
-    for xml_file in xml_list4:
-        num = file_dict4[xml_file]
-        str_len_xml = int2str(num)
-        target_path = os.path.join(targetDir, xml_file)
+for xml_file in file_listmh:
+    num = file_dict4[xml_file]
+    str_len_xml = int2str(num)
+    target_path = os.path.join(targetDir, xml_file)
 
-        targetXML = open(target_path, 'rt', encoding='UTF-8')
+    targetXML = open(target_path, 'rt', encoding='UTF-8')
 
-        tree = ET.parse(targetXML)
-        root = tree.getroot()
+    tree = ET.parse(targetXML)
+    root = tree.getroot()
 
-        target_filename = root.find("filename")
-        original = target_filename.text  # 원본 String
-        modified = original.replace(original.split('.')[0], str_len_xml)
-        target_filename.text = modified
+    target_filename = root.find("filename")
+    original = target_filename.text  # 원본 String
+    modified = original.replace(original.split('.')[0], str_len_xml)
+    target_filename.text = modified
 
-        target_path = root.find("path")
-        original_path = target_path.text
-        modified_original_path = original_path.replace((original_path.split('/')[2]).split('.')[0], str_len_xml)
-        target_path.text = modified_original_path
+    target_path = root.find("path")
+    original_path = target_path.text
+    modified_original_path = original_path.replace((original_path.split('/')[2]).split('.')[0], str_len_xml)
+    target_path.text = modified_original_path
 
-        save_path = os.path.join(save_Dir, str_len_xml) + '.xml'
-        tree.write(save_path)
+    save_path = os.path.join(save_Dir, str_len_xml) + '.xml'
+    tree.write(save_path)
 
-        img_path = img_targetDir + xml_file.split('.')[0] + '.jpg'
-        # print('img_path', img_path)
+    img_path = img_targetDir + xml_file.split('.')[0] + '.jpg'
+    # print('img_path', img_path)
 
-        im = Image.open(img_path)
-        img_save_path = img_save_Dir + str_len_xml + '.jpg'
+    im = Image.open(img_path)
+    img_save_path = img_save_Dir + str_len_xml + '.jpg'
 
-        im.save(img_save_path)
+    im.save(img_save_path)
 
 
 
