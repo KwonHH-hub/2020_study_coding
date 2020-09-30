@@ -43,11 +43,11 @@ for xpl in xml_path_list:
         target_file_name = root.find("filename")
         original_name = target_file_name.text
         modified_name = original_name.replace(original_name.split('.')[0], int2str(num))
-        target_file_name = modified_name
+        target_file_name.text = modified_name
 
         target_path = root.find("path")
         modified_path = 'PascalVoc/Annotations' + int2str(num) + '.jpg'
-        target_path = modified_path
+        target_path.text = modified_path
 
         img_targetDir = xpl.replace('Annotations', 'JPEGImages')
         img_path = img_targetDir + '\\' + n.split('.')[0] + '.jpg'
