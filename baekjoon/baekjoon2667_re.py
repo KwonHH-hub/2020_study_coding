@@ -38,9 +38,6 @@ def find(c, r, size):
             if not ((c, r-1) in visited or (c, r-1) in will_visit):
                 will_visit.append((c, r-1))
 
-
-
-    # print('in find function : will visit = ? ', will_visit)
     while will_visit:
         current = will_visit.pop()
         count += 1
@@ -69,7 +66,6 @@ for col in range(size):
                 pass
             else:
                 find(col, row, size)
-        # print(visited)
 answer = sorted(ans)
 print(len(ans))
 for a in answer:
