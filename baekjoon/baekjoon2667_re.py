@@ -1,19 +1,60 @@
 import sys
 
 # dfs 하는 함수를 선언
-def find(c, r, g):
-    print('c ',c)
-    print('r ',r)
-    print('\n')
+def find(c, r, size):
+    global visited
+    global graph
+    global count
+    global ans
 
-    while not g:
-        print()
-        print('h')
+    if not (c,r) in visited:
+        visited.append((c,r))
+
+    if c + 1 == size:
+        pass
+    else:
+        if graph[c+1][r] == '1':
+            if not ((c+1, r) in visited or (c+1,r) in will_visit):
+                will_visit.append((c+1, r))
+
+    if r + 1 == size:
+        pass
+    else:
+        if graph[c][r + 1] == '1':
+            if not ((c, r+1) in visited or (c, r+1) in will_visit):
+                will_visit.append((c, r+1))
+
+    if c - 1 < 0:
+        pass
+    else:
+        if graph[c-1][r] == '1':
+            if not ((c-1, r) in visited or (c-1, r) in will_visit):
+                will_visit.append((c-1, r))
+
+    if r - 1 < 0:
+        pass
+    else:
+        if graph[c][r-1] == '1':
+            if not ((c, r-1) in visited or (c, r-1) in will_visit):
+                will_visit.append((c, r-1))
 
 
 
+    # print('in find function : will visit = ? ', will_visit)
+    while will_visit:
+        current = will_visit.pop()
+        count += 1
+        find(current[0], current[1], size)
+
+    if not count == 0:
+        ans.append(count + 1)
+    count = 0
+
+
+count = 0
 visited = []
 will_visit = []
+ans = []
 
 # 행,열의 크기(size) 와 전체 지도(graph)를 입력받음
 graph = []
@@ -21,28 +62,15 @@ size = int(input())
 for _ in range(size):
     graph.append(sys.stdin.readline().strip())
 
-print(graph)
-print(size)
-
 for col in range(size):
-    print(col)
     for row in range(size):
-        if graph[col][row] == 0:
-            pass
-        else:
-            # print("here")
-            if col + 1 == size or row + 1 == size:
+        if graph[col][row] == '1':
+            if (col, row) in visited:
                 pass
             else:
-                # print("here")
-                if graph[col+1][row] == '1':
-                    # print("here1")
-                    will_visit.append((col+1, row))
-                elif graph[col][row + 1] == '1':
-                    # print('here2')
-                    will_visit.append((col, row + 1))
-                print(will_visit)
-                current = will_visit[0]
-                find(current[0], current[1],will_visit)
-
-print(will_visit)
+                find(col, row, size)
+        # print(visited)
+answer = sorted(ans)
+print(len(ans))
+for a in answer:
+    print(a)
