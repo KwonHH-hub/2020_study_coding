@@ -14,38 +14,53 @@ def bfs(x, y):
             graph[current[1]][current[0]] = '2'
             count += 1
 
-            if graph[current[1]][current[0] - 1] == '1' and (current[1], current[0] - 1) not in queue:
-                # relation += 1
-                queue.append((current[1], current[0] - 1))
-            if graph[current[1] - 1][current[0]] == '1' and (current[1] - 1, current[0]) not in queue:
-                # relation += 1
-                queue.append((current[1] - 1, current[0]))
-            if graph[current[1]][current[0] + 1] == '1' and (current[1], current[0] + 1) not in queue:
-                # relation += 1
-                queue.append((current[1], current[0] + 1))
-            if graph[current[1] + 1][current[0]] == '1' and (current[1] + 1, current[0]) not in queue:
-                # relation += 1
-                queue.append((current[1] + 1, current[0]))
-        print('count ', count)
-        print('graph ', graph)
+            # 방법 1
+            # if current[0] >= 1 and graph[current[1]][current[0] - 1] == '1' and (current[1], current[0] - 1) not in queue:
+            #     queue.append((current[0] - 1, current[1]))
+            #
+            # if current[0] <= 6 and graph[current[1]][current[0] + 1] == '1' and (current[1], current[0] + 1) not in queue:
+            #     queue.append((current[0] + 1, current[1]))
+            #
+            # if  current[1] >= 1 and graph[current[1] - 1][current[0]] == '1' and (current[1] - 1, current[0]) not in queue:
+            #     queue.append((current[0], current[1] - 1))
+            #
+            # if  current[1] <= 6 and graph[current[1] + 1][current[0]] == '1' and (current[1] + 1, current[0]) not in queue:
+            #     queue.append((current[0], current[1] + 1))
 
+            # 방법 2
+            # 방법 1, 2 중에서 뭐가 더 최적인지 모르겠음
+            if current[0] >= 1 and graph[current[1]][current[0] - 1] == '1':
+                if (current[1], current[0] - 1) not in queue:
+                    queue.append((current[0] - 1, current[1]))
 
-# def pointer (y, x):
-#     return [(y-1,x), (y,x-1), (y, x+1), (y+1, x)]
+            if current[0] <= 6 and graph[current[1]][current[0] + 1] == '1':
+                if (current[1], current[0] + 1) not in queue:
+                    queue.append((current[0] + 1, current[1]))
 
-size = int(sys.stdin.readline().strip())
+            if  current[1] >= 1 and graph[current[1] - 1][current[0]] == '1':
+                if (current[1] - 1, current[0]) not in queue:
+                    queue.append((current[0], current[1] - 1))
+
+            if  current[1] <= 6 and graph[current[1] + 1][current[0]] == '1':
+                if (current[1] + 1, current[0]) not in queue:
+                    queue.append((current[0], current[1] + 1))
+
+    return count
+
+size = int(input())
 graph = [list('n'*(size+1))]
+answer = []
 
 for _ in range(size):
     graph.append(list('n' + sys.stdin.readline().strip()))
-print(size)
-print('type of size : ', type(size))
-print(graph)
-print('type of graph : ', type(graph))
 
-for y in range(1, size):
-    for x in range(1, size):
+for y in range(1, size+1):
+    for x in range(1, size+1):
         if graph[y][x] == '1':
-            # graph[y][x] = '2'
-            bfs(x, y)
+            answer.append(bfs(x, y))
+
+answer.sort()
+print(len(answer))
+for a in answer:
+    print(a)
 
