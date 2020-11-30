@@ -54,10 +54,25 @@ answer = []
 for _ in range(size):
     graph.append(list('n' + sys.stdin.readline().strip()))
 
+# 방법 1
 for y in range(1, size+1):
     for x in range(1, size+1):
         if graph[y][x] == '1':
             answer.append(bfs(x, y))
+
+# 방법2
+# 방법 1 과 같은 동작이지만, 혹시 for 중첩으로 시간 초과인가 해서 이렇게도 구현해봄. 결국 오답
+# x = 1
+# y = 1
+#
+# while (x < size+1 and y < size+1):
+#     if graph[y][x] == '1':
+#         answer.append(bfs(x,y))
+#     x += 1
+#
+#     if x == size + 1:
+#         x = 0
+#         y += 1
 
 answer.sort()
 print(len(answer))
