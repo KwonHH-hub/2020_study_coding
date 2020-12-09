@@ -1,84 +1,69 @@
 import sys
 from collections import deque
+dx = [0,1,-1,0]
+dy = [1,0,0,-1]
 
-def find(n, m):
-    global count
+def find(n, m, visited):
     global node
-
-    check = 0
-    breakFlag = False
-    ambient_ctrl = 0
-
-    visited[n+1][m] = 1
     q = deque()
-    q.append((n+1,m))
+
+    limit_x = len(node[0])
+    limit_y = len(node)
+    q.append((n,m))
+    count = 0
+    current_y = 0
 
     while q:
-        if not breakFlag:
-            current = q.popleft()
+        current = q.popleft()
+        if current_y > current[0] :
+            continue
+        count += 1
+        current_x = current[1]
+        current_y = current[0]
 
 
-        ambient_list = [(current[0],current[1]),
-                        (current[0]+1,current[1]-1),
-                        (current[0]+1,current[1]+1),
-                        (current[0]+2,current[1])]
+        if visited[current_y][current_x] == 0 and node[current_y][current_x] == '0':
+            visited[current_y][current_x] = 1
 
-        if node[ambient_list[0][0]][ambient_list[0][1]] == '0' and visited[ambient_list[0][0]][ambient_list[0][1]] == 0 and ambient_list[0][0] > 0:
-            print('h1')
-            breakFlag = False
-            check += 1
+        for d in range(len(dx)):
+            ambient_x = current_x + dx[d]
+            ambient_y = current_y + dy[d]
 
-        if node[ambient_list[1][0]][ambient_list[1][1]] == '0' and visited[ambient_list[1][0]][ambient_list[1][1]] == 0 and ambient_list[1][1] > 0:
-            print('h2')
-            breakFlag = False
-            check += 1
+            if ambient_x >= 0 and ambient_y >= 0 and ambient_x < limit_x and ambient_y < limit_y:
+                if visited[ambient_y][ambient_x] == 0 and node[ambient_y][ambient_x] == '0':
 
-        if node[ambient_list[2][0]][ambient_list[2][1]] == '0' and visited[ambient_list[2][0]][ambient_list[2][1]] == 0 and ambient_list[2][1] < m:
-            print('h3')
-            breakFlag = False
-            check += 1
+                    q.append((ambient_y, ambient_x))
 
-        if node[ambient_list[3][0]][ambient_list[3][1]] == '0' and visited[ambient_list[3][0]][ambient_list[3][1]] == 0 and ambient_list[3][0] < n+1:
-            print('h4')
-            breakFlag = False
-            check += 1
-
-        if breakFlag == True:
-            current = (ambient_list[ambient_ctrl][0]+ambient_list[-ambient_ctrl][0],ambient_list[ambient_ctrl][1]+ambient_list[-ambient_ctrl][1])
-            print('cccc',current)
-
-        if check == 0:
-            print('here')
-            q.appendleft(current)
-
-            breakFlag = True
-            current = ambient_list[ambient_ctrl]
-            ambient_ctrl += 1
-
-            if ambient_ctrl == 4:
-                return -1
-
-
-
-
+    if current_x == limit_x - 1 and current_y == limit_y - 1:
+        return count
+    else:
+        return -1
 
 
 
 n, m = map(int, input().split())
-print('\nn : ', n)
-print('m : ', m)
-visited = [[0] * (m) for _ in range(n+1)]
-print('visited :\n',visited)
-node = ['1'* m]
+node = []
+answer = []
 count = 0
 
 for _ in range(n):
     temp = sys.stdin.readline().strip()
     node.append(temp)
-print('node :\n',node)
 
+for nn in range(n):
+    nd = node[nn]
+    for mm in range(m):
+        if nd[mm] == '1':
+            visited = [[0] * (m) for _ in range(n)]
+            node[nn] = nd[:mm] +'0'+ nd[mm+1:]
+            answer.append(find(0,0,visited))
+            node[nn] = nd[:mm] + '1' + nd[mm + 1:]
 
-find(0,0)
-print('count :: ', count)
+answer = list(set(answer))
+answer.sort()
+answer.remove(-1)
 
-print('final visit value : \n',visited)
+if answer:
+    print(answer[0])
+else:
+    print(-1)
