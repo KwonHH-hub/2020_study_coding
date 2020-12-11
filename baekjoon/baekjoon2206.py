@@ -240,7 +240,12 @@ while q:
                     q.append((x + xr, y + yr, count + 1, breakwallYN))
             elif board[x + xr][y + yr] == 1 and not breakwallYN and visit[1][x + xr][y + yr] == 0:
                 q.append((x + xr, y + yr, count + 1, True))
+                # 벽을 뚫었기 때문에 breakwallYN이 True가 되기 때문에 예제의 (1,1)에서는 이 조건문에 들어오지 못함
+                # 또한 뚫었을 때의 위치에 대해 count 또한 종속되기 때문에 (count 변수가 글로벌하지 않기 때문에)
+                # 막힌 벽이 아닌 지름길을 뚫었을 때, 해당 지점에서의 count수로 계산됨
+
                 visit[1][x + xr][y + yr] = 1
+    print('count : ', count)
 
 if done:
     print(min(anslist))
