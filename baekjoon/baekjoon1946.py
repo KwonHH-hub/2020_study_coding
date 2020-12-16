@@ -46,6 +46,23 @@
 #     print('time : ',case, '  ',time2-time1)
 
 
+def re_arr(A,B):
+    tmpA = A[:]
+    tmpB = []
+
+    tmpA.sort()
+    for a in range(len(A)):
+        idx = A.index(tmpA[a])
+        tmpB.append(B[idx])
+    return tmpB
+
+def find(A, B):
+    for i in range(len(A)):
+        ref = B[i]
+        tmp = A[0:i]
+        tmp.sort()
+
+
 case = int(input())
 print(case)
 while case > 0:
@@ -61,7 +78,12 @@ while case > 0:
     print(A)
     print(B)
 
-    for
+    tmpA = A[:]
+    tmpA.sort()
+    tmpB = re_arr(A,B)
+
+    print('tmpA ', tmpA)
+    print('tmpB ', tmpB)
 
     case -= 1
 
