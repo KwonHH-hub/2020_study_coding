@@ -1,11 +1,11 @@
 def count(rank):
-    cnt = 0
-    for a in range(len(rank)):
-        if a == 0:
-            min = rank[a][1]
+    cnt = 1
+    min = rank[0][1]
+    for a in range(1, len(rank)):
+        if rank[a][1] == 1:
             cnt += 1
-            continue
-        if rank[a][1] < min:
+            return cnt
+        elif rank[a][1] < min:
             cnt += 1
             min = rank[a][1]
     return cnt
