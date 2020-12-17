@@ -1,3 +1,5 @@
+import sys
+
 def count(rank):
     cnt = 1
     min = rank[0][1]
@@ -10,17 +12,14 @@ def count(rank):
             min = rank[a][1]
     return cnt
 
-
-
-
-
-case = int(input())
+case = int(sys.stdin.readline())
 while case > 0:
     rank = []
 
-    people = int(input())
+    people = int(sys.stdin.readline())
     while people > 0:
-        a, b = map(int, input().split(' '))
+        a, b = sys.stdin.readline().split()
+        a, b = int(a), int(b)
         rank.append((a,b))
         people -= 1
     rank_ = sorted(rank)
