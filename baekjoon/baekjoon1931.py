@@ -49,6 +49,7 @@ last_time = 0
 times = []
 time_delay = []
 count = 0
+
 for n in range(num):
     times.append(list(map(int, input().split(' '))))
 
